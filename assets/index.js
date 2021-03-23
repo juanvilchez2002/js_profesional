@@ -12,3 +12,6 @@ const button = document.querySelector('button');
 button.onclick = () => player.togglePlay();
 
 console.log(food)
+
+
+
