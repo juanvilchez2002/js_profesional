@@ -1,23 +1,5 @@
-function MediaPlayer(config){
-    this.media = config.el
-}
-
-MediaPlayer.prototype.play = function(){
-    this.media.play();
-}
-
-MediaPlayer.prototype.pause = function(){
-    this.media.pause();
-
-}
-
-MediaPlayer.prototype.togglePlay = function (){
-  if(this.media.paused){
-    this.play();
-  }else{
-    this.pause();
-  }
-}
+//importando MediaPlayer
+import MediaPlayer, {food }from  './MediaPlayer.js'
 
 //iniciando el código con constantes
 //seleccionamos los objetos
@@ -28,3 +10,5 @@ const button = document.querySelector('button');
 
 //usamos la api del dom
 button.onclick = () => player.togglePlay();
+
+console.log(food)
