@@ -1,6 +1,14 @@
 function MediaPlayer(config){
-    this.media = config.el
+    this.media = config.el;
+    this.plugins = config.plugins || [];
+    this._initPlugins();
 };
+
+MediaPlayer.prototype._initPlugins = function(){
+    this.plugins.forEach(plugin => {
+        plugin.run(this);
+    });
+}
 
 MediaPlayer.prototype.play = function(){
     this.media.play();
@@ -18,6 +26,19 @@ MediaPlayer.prototype.togglePlay = function (){
     this.pause();
   }
 };
+
+MediaPlayer.prototype.mute = function(){
+    this.media.paused = True;
+};
+
+MediaPlayer.prototype.unmute = function(){
+    this.media.paused = False;
+}
+
+//función para manejar 'UnmuteMute'
+MediaPlayer.prototype.unmuteMute = function(){
+    this.media.muted? this.media.muted=false : this.media.muted=true;
+}
 
 export default MediaPlayer;
 export const food = "comida";
