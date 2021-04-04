@@ -5,10 +5,6 @@ function MediaPlayer(config){
 };
 
 MediaPlayer.prototype._initPlugins = function(){
-    // this.plugins.forEach(plugin => {
-    //     plugin.run(this);
-    // });
-
     const player = {
         play: () => this.play(),
         pause: () => this.pause(),
@@ -23,6 +19,10 @@ MediaPlayer.prototype._initPlugins = function(){
             this.media.muted = value
         }
     }
+
+    this.plugins.forEach(plugin => {
+        plugin.run(player);
+      });
 }
 
 MediaPlayer.prototype.play = function(){
@@ -43,11 +43,11 @@ MediaPlayer.prototype.togglePlay = function (){
 };
 
 MediaPlayer.prototype.mute = function(){
-    this.media.paused = True;
+    this.media.muted = true;
 };
 
 MediaPlayer.prototype.unmute = function(){
-    this.media.paused = False;
+    this.media.muted = false;
 }
 
 //función para manejar 'UnmuteMute'

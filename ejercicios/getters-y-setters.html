@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Getters y Setters</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go Back</a>
+    <p><em>Abre la consola</em></p>
+    <script>
+        //uso de getters y setters
+        //como 'persona' es un objeto entonces podemos usar uno de los features modernos que
+        //trae javascript que son 'getters' y 'setters'
+        const persona = {
+            nombre: 'Juan',
+            apellido: 'Vilchez',
+            get nombreCompleto(){
+                return `${this.nombre} ${this.apellido}`
+            },
+
+            //estas propiedades al ser funciones pueden llevar una validación
+            //de por medio
+            set nombreCompleto(value){
+                const data = value.split(' ')
+                this.nombre = data[0] || ''
+                this.apellido = data[1] || ''
+            }
+        }
+
+        //se utiliza el operador de asignación '.', como si fuera una variable más dentro
+        //del objeto
+        console.log(persona.nombreCompleto);
+
+        //de esta forma le pasamos un uevo valor. como si fuera una variable más
+        persona.nombreCompleto ='Julio Calle'
+        console.log(persona.nombreCompleto);
+
+        //para declarar getters y setters, también podemos hacerlo a través de 'Object.defineProperty'
+        //que define una nueva propiedad directamente en un objeto, o modifica una propiedad existente
+        //en un objeto, y devuelve el objeto
+        //Object.defineProperty(objeto, nombrePropiedad, descriptor)
+
+        const persona1 = {
+            nombre: 'Karina',
+            apellido: 'Sanchez'
+        }
+
+        Object.defineProperty(persona1, 'nombreCompleto1',{
+            //get
+            get: function(){
+                return `${this.nombre} ${this.apellido}`
+            },
+            //set
+            set: function(value){
+                const data = value.split(' ')
+                this.nombre = data[0] || ''
+                this.apellido = data[1] || ''
+            }
+        })
+
+        console.log(persona1.nombreCompleto1);
+
+        persona1.nombreCompleto1 ='Henry Caman'
+        console.log(persona1.nombreCompleto1);
+
+    </script>
+</body>
+</html>
+
+
+
+https://unpkg.com/fast-levenshtein@2.0.6/levenshtein.js
