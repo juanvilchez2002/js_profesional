@@ -25,6 +25,22 @@ muteButton.onclick = () => {
     }
 };
 
+
+//serve para verificar si el navegador da apoyo al serviceworker
+//un serviceWorker es una capa que vive entre el navegador y el internet
+//sirven para hacer que nuestras aplicaciones funciones Offline
+
+
+//añadimos el 'if' para detectar si el navegador del usuario le da apoyo
+//a los 'Service Workers'
+
+if('serviceWorker' in navigator){
+    //registramos el archivo sw.js que sera el service worker
+    navigator.serviceWorker.register('/sw.js').catch(error => {
+        console.log(error.message)
+    })
+}
+
 console.log(food)
 
 
