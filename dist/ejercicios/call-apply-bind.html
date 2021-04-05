@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Call-apply-bind</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go Back</a>
+    <p><em>Abre la consola</em></p>
+
+    <ul>
+        <li><button class="call-to-action">Aprender</button></li>
+        <li><button class="call-to-action">Aprender Más</button></li>
+        <li><button class="call-to-action">¡Nunca pares de aprender!</button></li>
+    </ul>
+
+
+    <script>//establecer 'this' usando 'call'
+function saludar() {
+  console.log("Hola, soy ".concat(this.name, " ").concat(this.apellido));
+}
+
+;
+var juan = {
+  name: 'Juan',
+  apellido: 'Vilchez'
+};
+saludar.call(juan); //establecer 'this' usando 'call' y pasar argumentos a la función
+
+function caminar(metros, direccion) {
+  console.log("".concat(this.name, " camina ").concat(metros, "m hacia ").concat(direccion));
+}
+
+;
+caminar.call(juan, 400, 'Norte'); //establecer 'this' usando 'apply' y pasar argumentos a la función
+//a diferencia de 'call', 'apply' pasa los valores en array's
+
+var valores = [800, 'NorOeste'];
+caminar.apply(juan, valores);
+/*
+    call -> argumentos separados por comas
+    apply -> argumentos como array
+*/
+//establecer 'this' usando 'bind', 'bind' genera una nueva función
+
+var jdd = {
+  name: 'Juan de Dios',
+  apellido: 'Vilchez'
+};
+var jddsaluda = saludar.bind(jdd);
+jddsaluda();
+var jddcamina = caminar.bind(jdd, 2000, 'Sur');
+jddcamina();
+var jddcamina1 = caminar.bind(jdd, 2000);
+jddcamina1('SurEste'); //cuando es útil usar uno de estos métodos
+
+var button = document.getElementsByClassName("call-to-action");
+Array.prototype.forEach.call(button, function (button) {
+  button.onclick = function () {
+    return alert('Nunca pares de aprender!');
+  };
+});</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Prototype</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go Back</a>
+    <p><em>Abre la consola</em></p>
+    <script>//--
+//un objeto comun y corriente
+var zelda = {
+  name: 'Zelda'
+};
+
+zelda.saludar = function () {
+  console.log("Hola soy ".concat(this.name));
+};
+
+zelda.saludar();
+var link = {
+  name: 'Link'
+};
+
+link.saludar = function () {
+  console.log("Mi nombre es ".concat(this.name));
+};
+
+link.saludar(); //--
+//un poco más eficiente
+
+function Hero(name) {
+  var hero = {
+    name: name
+  }; //construimos el metodo 'saludar'
+
+  hero.saludar = function () {
+    console.log("Hola, soy ".concat(this.name));
+  };
+
+  return hero;
+}
+
+var zelda1 = Hero('Zelda 1'); //le pasamos el nombre como parametro
+
+zelda1.saludar(); //invocamos la función saludar
+
+var link1 = Hero('Link 1'); //le pasamos el nombre como parametro
+
+link1.saludar(); //invocamos la función saludar
+//--
+//haciendolo un poco mas eficiente
+
+var heroMethods = {
+  //creamos un metodo
+  saludar: function saludar() {
+    console.log("Hola soy ".concat(this.name));
+  }
+};
+
+function Hero1(name) {
+  var hero = {
+    name: name
+  };
+  hero.saludar = heroMethods.saludar; //refereciamos el metodo 'saludar'
+
+  return hero;
+}
+
+var zelda2 = Hero1('Zelda 2');
+zelda2.saludar();
+var link2 = Hero1('Link 2');
+link2.saludar(); //--
+//usando 'object.create' -> recibe un objeto y crea uno nuevo, y tendra todas las propiedades del objeto
+//definido
+//const nuevoObjeto = Object.create(objeto)
+
+var heroMethods1 = {
+  saludar: function saludar() {
+    console.log("Soy un superheroe ".concat(this.name));
+  }
+};
+
+function Hero2(name) {
+  var hero = Object.create(heroMethods1);
+  hero.name = name;
+  return hero;
+}
+
+var zelda3 = Hero2('Zelda 3');
+zelda3.saludar();
+var link3 = Hero2('Link3');
+link3.saludar(); //--
+//los métodos de hero dentro de 'Hero'
+//usando prototype
+
+function Hero3(name) {
+  var hero = Object.create(Hero3.prototype);
+  hero.name = name;
+  return hero;
+}
+
+Hero3.prototype.saludar = function () {
+  console.log("Soy un resuperHeroe ".concat(this.name));
+};
+
+var zelda4 = Hero3('Zelda 4');
+zelda4.saludar();
+var link4 = Hero3('Link 4');
+link4.saludar(); //--
+//'new' es un atajo, azucar sintactica, para llevar Hero.prototype al objeto
+//hereda todas las propiedades del prototype de otro objeto
+
+function Hero4(name) {
+  //usamos this
+  this.name = name;
+  return this; //aunque no es necesario
+}
+
+Hero4.prototype.saludar = function () {
+  console.log("Soy un Nuevo resuperHeroe ".concat(this.name));
+};
+
+var zelda5 = new Hero4('Zelda 5');
+zelda5.saludar();
+var link5 = new Hero4('Link 5');
+link5.saludar();</script>
+</body>
+</html>

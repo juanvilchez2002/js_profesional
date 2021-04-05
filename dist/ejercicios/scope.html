@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Scope - Ambito</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go Back</a>
+    <p><em>Abre la consola</em></p>
+    <!--importando a jquery-->
+    <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
+    <script>//global scope
+var message = ' Hola, Platzi'; //aquí si llamamos a $("Hola") nos enviara el mensaje "Decir: Hola"
+//ya que message lo considera una variable nueva dentro de la función
+
+var $ = function $(message) {
+  console.log("Decir: " + message);
+}; //function scope
+
+
+function printNumbers() {
+  for (var i = 0; i < 10; i++) {
+    function eventuallyPrint(n) {
+      setTimeout(function () {
+        console.log(n);
+      }, 100);
+    }
+
+    eventuallyPrint(i);
+  }
+}
+
+printNumbers(); //block scope
+
+console.log("Block Scope");
+
+function printNumbers1() {
+  var _loop = function _loop(i) {
+    setTimeout(function () {
+      console.log(i);
+    }, 100);
+  };
+
+  for (var i = 0; i < 10; i++) {
+    _loop(i);
+  }
+}
+
+printNumbers1(); //module scope
+///ejercicios
+//probando algo nuevo
+
+function saludo(nombre) {
+  var apellido = "vilchez";
+
+  function fn() {
+    console.log("hola");
+  }
+
+  fn();
+}
+
+saludo("juan");</script>
+</body>
+</html>

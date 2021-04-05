@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Getters y Setters</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go Back</a>
+    <p><em>Abre la consola</em></p>
+    <script src="https://unpkg.com/fast-levenshtein@2.0.6/levenshtein.js"></script>
+    <script>//'Leveshtain' => es un algoritmo que va a permitir encontrar la distancia entre dos cadenas
+//creamos nuestro objeto original o del objeto base
+var target = {
+  red: 'Rojo',
+  green: 'Verde',
+  blue: 'Azul'
+}; //handler tambien es un objeto y puede tener varias funciones (funciones trampa)
+
+var handler = {
+  get: function get(target, property) {
+    if (property in target) {
+      return target[property];
+    } //'get' recibe 2 cosas: el objeto target, que es nuestro objeto original
+    //y la propiedad que se esta tratanndo de leer
+
+
+    var suggestion = Object.keys(target).find(function (key) {
+      return Levenshtein.get(key, property) <= 3;
+    });
+
+    if (suggestion) {
+      console.log("".concat(property, " no se encontro, Quiso decir ").concat(suggestion));
+    } //return target[property]
+
+  }
+}; //al objeto proxy le pasamos el objeto original (target), y el objeto 'handler' que va a
+//definir el comprotamiento del objeto proxy
+
+var proxy = new Proxy(target, handler);
+console.log(proxy);
+console.log(proxy.red);
+console.log(proxy.reeeed);</script>
+</body>
+</html>
+
+

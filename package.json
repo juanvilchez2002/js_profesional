@@ -8,14 +8,17 @@
     "platzi"
   ],
   "scripts": {
-    "start": "live-server"
+    "start": "parcel index.html ejercicios/index.html ejercicios/**/*.html"
   },
   "devDependencies": {
-    "live-server": "^1.2.1",
-    "parcel-bundler": "^1.12.3",
+    "parcel-bundler": "^1.12.5",
     "typescript": "^3.5.3"
   },
   "dependencies": {
     "@sparragus/platzimediaplayer": "^1.0.0"
-  }
+  },
+  "browserslist": [
+    "last 1 chrome version",
+    "defaults"
+  ]
 }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Closure - Ambito</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go Back</a>
+    <p><em>Abre la consola</em></p>
+    <script>//ejemplo de IIEF
+//Immediately-invoked function expressions
+//es una función que se llama de la siguiente manera
+//funcion inicial
+
+/*let color = 'green'
+ function printColor(){
+    console.log(color);
+}
+ printColor()*/
+//versión IIEF
+(function () {
+  //función scope
+  var color = 'green'; //color ya no esta en el scope global
+
+  function printColor() {
+    console.log(color);
+  }
+
+  printColor();
+})(); //ejemplo 1 de closure
+
+
+function creaFunciones() {
+  var nombre = 'Luis'; //'muestraNombre' es una función interna osea un closure
+
+  function muestraNombre() {
+    console.log(nombre);
+  } //returno la referencia de la función 'muestraNombre' y voy a recordar el estado de las
+  //variables al momento que sea invocado
+
+
+  return muestraNombre();
+} //creo una variable que contenga la función 'creaFunciones'
+//esta nueva variable 'miNuevaFuncion' se ha convertido en un closure
+
+
+var miNuevaFuncion = creaFunciones(); //console.log(miNuevaFuncion());//llamamos a la función y vemos que se imprime el valor de 'nombre'
+//ejemplo 2 de closure
+//funciones que regresan funciones
+
+function makeColorPrint(color) {
+  var colorMessage = "El Color es ".concat(color); //voy a retornar la referencia de esta función y voy a recordar la variable 'colorMessage'
+  //de la función 'makeColorPrint' y los argumentos cuando lo invocamos
+
+  return function () {
+    console.log(colorMessage);
+  };
+}
+
+var greenColorPrinter = makeColorPrint('green');
+console.log(greenColorPrinter()); //ejemplo 3 de closure
+
+function makeCounter(n) {
+  var count = n; //esta variable es privada
+  //los closures, ademas de ser funciones tambien pueden ser un objeto
+  //este objeto va a recordar todas las variables definidas en el función scope
+
+  return {
+    increase: function increase() {
+      count = count + 1; //incrementa en 1
+    },
+    decrease: function decrease() {
+      count = count - 1; //decrementa en 1
+    },
+    getcount: function getcount() {
+      return count; //devuelve el valor
+    }
+  };
+}
+
+var counter = makeCounter(7);
+console.log(counter.getcount());
+counter.increase();
+console.log(counter.getcount());
+counter.decrease();
+counter.decrease();
+console.log(counter.getcount());</script>
+</body>
+</html>

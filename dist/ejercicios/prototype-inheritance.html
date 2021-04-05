@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Herencia Prototipal</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go Back</a>
+    <p><em>Abre la consola</em></p>
+    <script>function Hero(name) {
+  this.name = name;
+}
+
+Hero.prototype.saludar = function () {
+  console.log("Hola soy, ".concat(this.name));
+};
+
+var zelda = new Hero('Zelda'); //propiedades de la instancia
+
+console.log("name: ", zelda.name); //propieades de la 'clase'        
+
+console.log("name: ", zelda.saludar); //propieades heredadas ej: toString
+
+console.log("toString: ", zelda.toString); //hasOnwnProperty -> sirve para verificar si una propiedad es parte del objeto o 
+//si viene heredada desde su prototype chain
+
+console.log('zelda.hasOwnProperty("name")', zelda.hasOwnProperty("name")); //inspeccionemos el prototipo del zelda
+//inspeccionemos el prototipo del Hero
+//inspeccionemos el prototipo del Object</script>
+</body>
+</html>
