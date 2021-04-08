@@ -125,7 +125,94 @@ function add(a, b) {
 }
 
 var sum = add(15, 19);
-console.log(sum);
+console.log(sum); //variables
+
+var muted = true;
+muted = false; //muted = 'callado'; // nos muestra un error ya que lo declaramos como boolean
+//números
+
+var numerador = 42;
+var denominador = 6;
+var resultado = numerador / denominador; //string
+
+var nombre = 'Richard';
+var saludo = "Hola soy " + nombre; //arreglos -> aquí pueden ser de muchos tipos de datos
+
+var people = [];
+people = ["Isabel", "Raul"];
+people.push("Juan");
+var peopleAndNumbers = [];
+peopleAndNumbers.push("Juan");
+peopleAndNumbers.push(10); //enum -> enumera un conjunto de algo
+
+var color;
+
+(function (color) {
+  color["Rojo"] = "Rojo";
+  color["Verde"] = "Verde";
+  color["Azul"] = "Azul";
+  color["Amarrillo"] = "Amarillo";
+})(color || (color = {}));
+
+;
+var colorFavorito = color.Amarrillo;
+console.log("Mi color favorito es " + colorFavorito); //Any -> 
+
+var comodin = 'Jokey';
+comodin = {
+  type: 'Wildcard'
+}; //Object
+
+var someObject = {
+  type: "Juan"
+};
+console.log(someObject); //Funciones
+//funciones con retorno de un tipo especifico de variable
+
+function add1(a, b) {
+  return a + b;
+}
+
+var sum1 = add(4, 6);
+console.log(sum1); //funciones que retorna una función
+
+function createAdder(a) {
+  return function (b) {
+    return b + a;
+  };
+}
+
+var addFour = createAdder(4);
+var fourPlus6 = addFour(6);
+console.log(fourPlus6); //con parametros opcionales y predeterminados
+//todas las funciones q tienen un parametro asignado, es obligatorio enviarlo salvo se le
+//indica que pueden ser opcional. Si no se le pasa los parametros, muestra un error
+
+function fullName(fistName, lastName) {
+  return fistName + " " + lastName;
+}
+
+var juan = fullName("Juan", "Vilchez");
+console.log(juan); //para que el parametro sea opcional, se le asigna '?' antes de ':'
+//nos mostrara el valor 'undefined
+
+function fullName1(fistName, lastName) {
+  return fistName + " " + lastName;
+}
+
+var juan1 = fullName1("Juan");
+console.log(juan1); //para que el parametro tenga un valor por defecto se le asigna
+
+function fullName2(fistName, lastName) {
+  if (lastName === void 0) {
+    lastName = 'Vilchez';
+  }
+
+  return fistName + " " + lastName;
+}
+
+var juan2 = fullName2("Juan");
+console.log(juan2);
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -154,7 +241,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34879" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37517" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -51,3 +51,58 @@ comodin = {type: 'Wildcard'};
 let someObject: object = {type: "Juan"};
 console.log(someObject)
 
+
+//Funciones
+//funciones con retorno de un tipo especifico de variable
+function add1(a: number, b:number): number{
+    return a+b;
+}
+
+const sum1 = add(4,6);
+
+console.log(sum1);
+
+//funciones que retorna una función
+function createAdder(a: number): (number) => number{
+    return function (b: number){
+        return b+a;
+    }
+}
+
+const addFour = createAdder(4);
+const fourPlus6 = addFour(6)
+
+console.log(fourPlus6);
+
+//con parametros opcionales y predeterminados
+//todas las funciones q tienen un parametro asignado, es obligatorio enviarlo salvo se le
+//indica que pueden ser opcional. Si no se le pasa los parametros, muestra un error
+function fullName(fistName: string, lastName: string): string{
+    return `${fistName} ${lastName}`
+}
+
+const juan = fullName("Juan", "Vilchez");
+
+console.log(juan);
+
+
+//para que el parametro sea opcional, se le asigna '?' antes de ':'
+//nos mostrara el valor 'undefined
+function fullName1(fistName: string, lastName?: string): string{
+    return `${fistName} ${lastName}`
+}
+
+const juan1 = fullName1("Juan");
+
+console.log(juan1);
+
+//para que el parametro tenga un valor por defecto se le asigna
+function fullName2(fistName: string, lastName: string = 'Vilchez'): string{
+    return `${fistName} ${lastName}`
+}
+
+const juan2 = fullName2("Juan");
+
+console.log(juan2);
+
+
