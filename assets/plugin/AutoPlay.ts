@@ -6,10 +6,10 @@ class AutoPlay {
     run(player: MediaPlayer) {
         // player.mute();
         // player.play();
-        if (!player.muted) {
-            player.muted = true;
+        if (!player.media.muted) {
+            player.media.muted = true;
         } else {
-            player.muted = false;
+            player.media.muted = false;
         }
 
         player.play();

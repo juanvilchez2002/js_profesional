@@ -1,7 +1,7 @@
 //importando MediaPlayer
-import MediaPlayer, {food }from  './MediaPlayer.js';
-import AutoPlay from './plugin/AutoPlay.js';
-import AutoPause from "./plugin/AutoPause.ts";
+import MediaPlayer, {food }from  './MediaPlayer';
+import AutoPlay from './plugin/AutoPlay';
+import AutoPause from "./plugin/AutoPause";
 
 //iniciando el código con constantes
 //seleccionamos los objetos
@@ -11,11 +11,11 @@ const player = new MediaPlayer({
     plugins:[new AutoPlay(), new AutoPause()]
 });
 
-const playButton = document.querySelector('#playButton');
+const playButton: HTMLElement = document.querySelector('#playButton');
 playButton.onclick = () => player.togglePlay();
 
 //adicionando la variable para usar 'UnmuteMute'
-const muteButton = document.querySelector('#muteButton');
+const muteButton: HTMLElement = document.querySelector('#muteButton');
 
 muteButton.onclick = () => {
     if(player.media.muted){

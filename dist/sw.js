@@ -172,7 +172,7 @@ function _precache() {
             //esto es mio
             console.log(cache); //añadimos varios recursos
 
-            return _context.abrupt("return", cache.addAll(['/', '/index.html', '/assets/index.js', '/assets/MediaPlayer.js', '/assets/plugin/AutoPlay.js', '/assets/plugin/AutoPause.js', '/assets/index.css', '/assets/BigBuckBunny.mp4']));
+            return _context.abrupt("return", cache.addAll(['/', '/index.html', '/assets/index.js', '/assets/MediaPlayer.js', '/assets/plugin/AutoPlay.js', '/assets/plugin/AutoPause.ts', '/assets/index.css', '/assets/BigBuckBunny.mp4']));
 
           case 5:
           case "end":
@@ -277,7 +277,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37463" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33635" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
