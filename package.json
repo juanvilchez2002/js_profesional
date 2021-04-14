@@ -11,14 +11,14 @@
     "start": "parcel index.html ejercicios/index.html ejercicios/**/*.html"
   },
   "devDependencies": {
-    "parcel-bundler": "^1.12.5",
+    "parcel-bundler": "^1.12.3",
     "typescript": "^3.5.3"
   },
   "dependencies": {
     "@sparragus/platzimediaplayer": "^1.0.0"
   },
   "browserslist": [
-    "last 1 chrome version",
+    "last 1 Chrome version",
     "defaults"
   ]
 }

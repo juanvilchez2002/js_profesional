@@ -49,7 +49,7 @@ async function precache(){
         '/assets/index.js',
         '/assets/MediaPlayer.js',
         '/assets/plugin/AutoPlay.js',
-        '/assets/plugin/AutoPause.js',
+        '/assets/plugin/AutoPause.ts',
         '/assets/index.css',
         '/assets/BigBuckBunny.mp4',
       ]);

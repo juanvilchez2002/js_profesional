@@ -1,7 +1,7 @@
 //importando MediaPlayer
 import MediaPlayer, {food }from  './MediaPlayer.js';
 import AutoPlay from './plugin/AutoPlay.js';
-import AutoPause from "./plugin/AutoPause.js";
+import AutoPause from "./plugin/AutoPause.ts";
 
 //iniciando el código con constantes
 //seleccionamos los objetos

@@ -212,7 +212,39 @@ function fullName2(fistName, lastName) {
 }
 
 var juan2 = fullName2("Juan");
-console.log(juan2);
+console.log(juan2); //Interfaces en typescript
+//Una interface es un contrato sintactico que una entidad debe de cumplir. Una interface define la
+//sintaxis a la cual una entidad debe de adherirse
+
+var Color;
+
+(function (Color) {
+  Color["Rojo"] = "Rojo";
+  Color["Verde"] = "Verde";
+  Color["Azul"] = "Azul";
+})(Color || (Color = {})); //declarando una variable de tipo Rectangulo, se debe de declarar todas las variables o si no nos
+//arrojara un error, caso contrario podemos declararla como opcional '?'
+
+
+var rect = {
+  ancho: 4,
+  alto: 6,
+  color: Color.Rojo
+};
+
+function area(r) {
+  return r.alto * r.ancho;
+}
+
+var areaRect = area(rect);
+console.log(areaRect);
+console.log(rect.toString()); //nos devuelve dos objetos vacios
+
+rect.toString = function () {
+  return this.color ? "un rectangulo de color " + this.color : "un rectangulo";
+};
+
+console.log(rect.toString());
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -241,7 +273,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37517" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37463" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

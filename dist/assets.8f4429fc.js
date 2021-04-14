@@ -217,71 +217,58 @@ AutoPlay.prototype.run = function (player) {
 
 var _default = AutoPlay;
 exports.default = _default;
-},{}],"assets/plugin/AutoPause.js":[function(require,module,exports) {
+},{}],"assets/plugin/AutoPause.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var AutoPause = /*#__PURE__*/function () {
+var AutoPause =
+/** @class */
+function () {
   function AutoPause() {
-    _classCallCheck(this, AutoPause);
-
     this.threshold = 0.25;
     this.handleIntersection = this.handleIntersection.bind(this);
     this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
   }
 
-  _createClass(AutoPause, [{
-    key: "run",
-    value: function run(player) {
-      this.player = player;
-      var observer = new IntersectionObserver(this.handleIntersection, {
-        //umbral=threshold
-        threshold: this.threshold
-      });
-      observer.observe(this.player.media);
-      document.addEventListener("visibilitychange", this.handleVisibilityChange);
-    }
-  }, {
-    key: "handleIntersection",
-    value: function handleIntersection(entries) {
-      var entry = entries[0];
-      console.log(entry);
-      var isVisible = entry.intersectionRatio >= this.threshold;
+  AutoPause.prototype.run = function (player) {
+    this.player = player;
+    var observer = new IntersectionObserver(this.handleIntersection, {
+      //umbral=threshold
+      threshold: this.threshold
+    });
+    observer.observe(this.player.media);
+    document.addEventListener("visibilitychange", this.handleVisibilityChange);
+  };
 
-      if (isVisible) {
-        this.player.play();
-      } else {
-        this.player.pause();
-      }
-    }
-  }, {
-    key: "handleVisibilityChange",
-    value: function handleVisibilityChange() {
-      var isVisible = document.visibilityState === 'visible';
+  AutoPause.prototype.handleIntersection = function (entries) {
+    var entry = entries[0];
+    console.log(entry);
+    var isVisible = entry.intersectionRatio >= this.threshold;
 
-      if (isVisible) {
-        this.player.play();
-      } else {
-        this.player.pause();
-      }
+    if (isVisible) {
+      this.player.play();
+    } else {
+      this.player.pause();
     }
-  }]);
+  };
+
+  AutoPause.prototype.handleVisibilityChange = function () {
+    var isVisible = document.visibilityState === 'visible';
+
+    if (isVisible) {
+      this.player.play();
+    } else {
+      this.player.pause();
+    }
+  };
 
   return AutoPause;
 }();
 
-var _default = AutoPause;
-exports.default = _default;
+exports.default = AutoPause;
 },{}],"assets/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -289,7 +276,7 @@ var _MediaPlayer = _interopRequireWildcard(require("./MediaPlayer.js"));
 
 var _AutoPlay = _interopRequireDefault(require("./plugin/AutoPlay.js"));
 
-var _AutoPause = _interopRequireDefault(require("./plugin/AutoPause.js"));
+var _AutoPause = _interopRequireDefault(require("./plugin/AutoPause.ts"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -335,7 +322,7 @@ if ('serviceWorker' in navigator) {
 }
 
 console.log(_MediaPlayer.food);
-},{"./MediaPlayer.js":"assets/MediaPlayer.js","./plugin/AutoPlay.js":"assets/plugin/AutoPlay.js","./plugin/AutoPause.js":"assets/plugin/AutoPause.js","/mnt/c/Users/JUAN VILCHEZ/Desktop/Cursos Online/Arquitecto Front End/16. JS Profesional/js_profesional/sw.js":[["sw.js","sw.js"],"sw.js.map","sw.js"]}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./MediaPlayer.js":"assets/MediaPlayer.js","./plugin/AutoPlay.js":"assets/plugin/AutoPlay.js","./plugin/AutoPause.ts":"assets/plugin/AutoPause.ts","/mnt/c/Users/JUAN VILCHEZ/Desktop/Cursos Online/Arquitecto Front End/16. JS Profesional/js_profesional/sw.js":[["sw.js","sw.js"],"sw.js.map","sw.js"]}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -363,7 +350,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37517" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37463" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

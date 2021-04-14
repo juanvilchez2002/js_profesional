@@ -106,3 +106,44 @@ const juan2 = fullName2("Juan");
 console.log(juan2);
 
 
+//Interfaces en typescript
+//Una interface es un contrato sintactico que una entidad debe de cumplir. Una interface define la
+//sintaxis a la cual una entidad debe de adherirse
+
+enum Color {
+    Rojo = 'Rojo',
+    Verde = 'Verde',
+    Azul = 'Azul'
+}
+
+//declarando la interface Rectangulo
+interface Rectangulo {
+    ancho:number
+    alto:number
+    color: Color
+}
+
+
+//declarando una variable de tipo Rectangulo, se debe de declarar todas las variables o si no nos
+//arrojara un error, caso contrario podemos declararla como opcional '?'
+let rect: Rectangulo = {
+    ancho:4,
+    alto:6,
+    color: Color.Rojo
+}
+
+function area(r:Rectangulo){
+    return r.alto*r.ancho;
+}
+
+const areaRect = area(rect);
+console.log(areaRect);
+
+console.log(rect.toString());//nos devuelve dos objetos vacios
+
+rect.toString = function(){
+    return this.color? `un rectangulo de color ${this.color}`: `un rectangulo`
+}
+
+console.log(rect.toString());
+
